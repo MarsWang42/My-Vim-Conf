@@ -145,3 +145,12 @@ set listchars=tab:>_,trail:.,extends:#,nbsp:.
 let g:lasttab = 1
 nmap tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
+
+" Undo buffer
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile                 "turn on the feature  
+  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
+  endif     
+
+" allows for mouse scrolling
+set mouse=a
