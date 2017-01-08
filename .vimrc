@@ -37,8 +37,10 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-" YouCompleteMe
+" AutoCompleteRelated
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'sirver/ultisnips'
+Plugin 'honza/vim-snippets'
 " These are the tweaks I apply to YCM's config, you don't need them but they might help.
 " YCM gives you popups and splits by default that some people might not like, so these should tidy it up a bit for you.
 let g:ycm_add_preview_to_completeopt=0
@@ -57,6 +59,13 @@ let g:ycm_semantic_triggers =  {
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
   \ }
+" UltiSnips Trigger configuration.
+let g:UltiSnipsExpandTrigger=".."
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
