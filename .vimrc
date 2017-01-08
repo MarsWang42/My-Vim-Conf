@@ -63,7 +63,6 @@ let g:ycm_semantic_triggers =  {
 let g:UltiSnipsExpandTrigger=".."
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -119,6 +118,8 @@ Plugin 'mxw/vim-jsx'
 
 " TagBar
 Plugin 'majutsushi/tagbar'
+nmap <C-a> :TagbarToggle<CR>
+nmap tn :TagbarOpen fj<CR>
 
 " ESLint
 Plugin 'scrooloose/syntastic'
@@ -183,5 +184,8 @@ if has('persistent_undo')      "check if your vim version supports it
   set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
   endif     
 
-" allows for mouse scrolling
+" Allows for mouse scrolling
 set mouse=a
+
+" Highlight Current Line
+set cursorline
