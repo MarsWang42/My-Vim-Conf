@@ -3,7 +3,8 @@ imap jk <Esc>
 nnoremap tn  :tabnew<CR>
 nnoremap tj  :tabnext<CR>
 nnoremap tk  :tabprev<CR>
-let mapleader = ","
+let mapleader =','
+let g:user_emmet_leader_key=','
 
 "Vundle
 set nocompatible              " be iMproved, required
@@ -93,6 +94,9 @@ Plugin 'Raimondi/delimitMate'
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
+" GitGutter
+Plugin 'airblade/vim-gitgutter'
+
 " Plugins for Javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
@@ -100,13 +104,18 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
+
+" TagBar
+Plugin 'majutsushi/tagbar'
 
 " ESLint
 Plugin 'scrooloose/syntastic'
 
 " Plugins for Ruby
 Plugin 'vim-ruby/vim-ruby'
- 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
