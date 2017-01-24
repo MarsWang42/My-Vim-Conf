@@ -3,6 +3,7 @@ imap jk <Esc>
 nnoremap tn  :tabnew<CR>
 nnoremap tj  :tabnext<CR>
 nnoremap tk  :tabprev<CR>
+nnoremap tc  :tabclose<CR>
 let mapleader =','
 let g:user_emmet_leader_key=','
 
@@ -72,9 +73,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
 " EasyMotion
@@ -119,10 +119,31 @@ Plugin 'mxw/vim-jsx'
 " TagBar
 Plugin 'majutsushi/tagbar'
 nmap <C-a> :TagbarToggle<CR>
-nmap tn :TagbarOpen fj<CR>
+nmap to :TagbarOpen fj<CR>
+
+" MultiCursor
+Plugin 'terryma/vim-multiple-cursors'
 
 " ESLint
 Plugin 'scrooloose/syntastic'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " Plugins for Ruby
 Plugin 'vim-ruby/vim-ruby'
