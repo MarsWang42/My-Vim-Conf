@@ -68,15 +68,25 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " CtrlP
-Plugin 'ctrlpvim/ctrlp.vim'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-let g:ctrlp_max_files=0
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
+" Plugin 'ctrlpvim/ctrlp.vim'
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+" set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+" let g:ctrlp_max_files=0
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+"   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+"   \ }
+
+" FZF
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+nnoremap <c-p> :FZF<cr>
 
 " EasyMotion
 Plugin 'easymotion/vim-easymotion'
@@ -109,6 +119,7 @@ Plugin 'airblade/vim-gitgutter'
 " Plugins for Javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'isRuslan/vim-es6'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'tpope/vim-surround'
@@ -116,6 +127,10 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
 Plugin 'mxw/vim-jsx'
+Plugin 'ap/vim-css-color'
+
+" JSX
+let g:jsx_ext_required = 0
 
 " TagBar
 Plugin 'majutsushi/tagbar'
@@ -126,28 +141,35 @@ nmap to :TagbarOpen fj<CR>
 Plugin 'terryma/vim-multiple-cursors'
 
 " ESLint
-Plugin 'scrooloose/syntastic'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+" Plugin 'scrooloose/syntastic'
+" Plugin 'mtscout6/syntastic-local-eslint.vim'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_error_symbol = '❌'
+" let g:syntastic_style_error_symbol = '⁉️'
+" let g:syntastic_warning_symbol = '⚠️'
+" let g:syntastic_style_warning_symbol = '💩'
+" highlight link SyntasticErrorSign SignColumn
+" highlight link SyntasticWarningSign SignColumn
+" highlight link SyntasticStyleErrorSign SignColumn
+" highlight link SyntasticStyleWarningSign SignColumn
+Plugin 'w0rp/ale'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 " Plugins for Ruby
 Plugin 'vim-ruby/vim-ruby'
+
+" Plugins for Elixir
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -211,3 +233,10 @@ set mouse=a
 
 " Highlight Current Line
 set cursorline
+hi CursorLine   cterm=NONE ctermbg=DarkGray
+
+" Highlight All Search Pattern
+set hlsearch
+
+" Javascript syntax fix
+autocmd BufRead *.jsx set syntax=javascript
