@@ -1,3 +1,4 @@
+" Hahaha
 " Key Remapping
 imap jk <Esc>
 nnoremap tn  :tabnew<CR>
