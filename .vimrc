@@ -26,7 +26,7 @@ Plugin 'flazz/vim-colorschemes'
 
 " NERDTree
 Plugin 'scrooloose/nerdtree'
-map <C-e> :NERDTreeToggle<CR>
+map <silent> <C-e> :NERDTreeToggle<CR> :NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
@@ -137,6 +137,18 @@ Plugin 'majutsushi/tagbar'
 nmap <C-a> :TagbarToggle<CR>
 nmap to :TagbarOpen fj<CR>
 
+" Trailing Space
+Plugin 'bronson/vim-trailing-whitespace'
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd BufWritePre     * :call TrimWhiteSpace()
+
 " MultiCursor
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -164,8 +176,10 @@ Plugin 'w0rp/ale'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 
+
 " Plugins for Ruby
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
 
 " Plugins for Elixir
 Plugin 'elixir-lang/vim-elixir'
@@ -194,7 +208,7 @@ set background=dark
 colorscheme molokai
 
 " Line Numbers
-set relativenumber 
+set relativenumber
 set number
 
 " Clipboard
@@ -224,9 +238,9 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " Undo buffer
 if has('persistent_undo')      "check if your vim version supports it
-  set undofile                 "turn on the feature  
+  set undofile                 "turn on the feature
   set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
-  endif     
+  endif
 
 " Allows for mouse scrolling
 set mouse=a
@@ -246,3 +260,7 @@ nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
+
+" Swp file handling
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
