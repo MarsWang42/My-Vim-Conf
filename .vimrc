@@ -5,7 +5,7 @@ nnoremap tj  :tabnext<CR>
 nnoremap tk  :tabprev<CR>
 nnoremap tc  :tabclose<CR>
 let mapleader =','
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key='/'
 
 "Vundle
 set nocompatible              " be iMproved, required
@@ -61,7 +61,7 @@ let g:ycm_semantic_triggers =  {
   \   'erlang' : [':'],
   \ }
 " UltiSnips Trigger configuration.
-let g:UltiSnipsExpandTrigger=".."
+let g:UltiSnipsExpandTrigger="<C-q>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
