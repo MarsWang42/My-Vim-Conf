@@ -61,7 +61,7 @@ let g:ycm_semantic_triggers =  {
   \   'erlang' : [':'],
   \ }
 " UltiSnips Trigger configuration.
-let g:UltiSnipsExpandTrigger="<C-q>"
+let g:UltiSnipsExpandTrigger="<c-t>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
