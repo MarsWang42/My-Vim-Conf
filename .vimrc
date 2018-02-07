@@ -76,8 +76,8 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 "   :Ag! - Start fzf in fullscreen and display the preview window above
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \                         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \                 <bang>0)
 
 " EasyMotion
@@ -99,13 +99,17 @@ let delimitMate_expand_space = 1
 " GitGutter
 Plug 'airblade/vim-gitgutter'
 
+" Code Formatter
+Plug 'Chiel92/vim-autoformat'
+noremap <C-j> :Autoformat<CR>
+
 " Plugins for Javascript
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
 Plug 'mattn/emmet-vim'
 Plug 'elzr/vim-json'
@@ -196,9 +200,10 @@ if has('persistent_undo')      "check if your vim version supports it
 " Allows for mouse scrolling
 set mouse=a
 
-" Highlight Current Line
+" Highlight Current Line/Columhn
 set cursorline
 hi CursorLine   cterm=NONE ctermbg=DarkGray
+set cursorcolumn
 
 " Highlight All Search Pattern
 set hlsearch
