@@ -101,7 +101,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Code Formatter
 Plug 'Chiel92/vim-autoformat'
-noremap <C-j> :Autoformat<CR>
+nnoremap <Leader><Leader>a :Autoformat<cr>
 
 " Plugins for Javascript
 Plug 'jelera/vim-javascript-syntax'
