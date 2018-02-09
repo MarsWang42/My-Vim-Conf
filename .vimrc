@@ -75,13 +75,19 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 "   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
 "   :Ag! - Start fzf in fullscreen and display the preview window above
 command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \                         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
-  \                 <bang>0)
+      \ call fzf#vim#ag(<q-args>,
+      \                 <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+      \                         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+      \                 <bang>0)
 
 " EasyMotion
 Plug 'easymotion/vim-easymotion'
+
+" Start Screen
+Plug 'mhinz/vim-startify'
+if has('nvim')
+    au! TabNewEntered * Startify
+endif
 
 " Fugitive
 Plug 'tpope/vim-fugitive'
@@ -119,16 +125,16 @@ Plug 'ap/vim-css-color'
 " JSX
 let g:jsx_ext_required = 0
 let g:user_emmet_settings = {
-\  'javascript' : {
-\      'extends' : 'jsx',
-\  },
-\}
+      \  'javascript' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
 
 " Trailing Space
 Plug 'bronson/vim-trailing-whitespace'
 " Removes trailing spaces
 function! TrimWhiteSpace()
-    %s/\s\+$//e
+  %s/\s\+$//e
 endfunction
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 autocmd FileWritePre    * :call TrimWhiteSpace()
@@ -195,7 +201,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 if has('persistent_undo')      "check if your vim version supports it
   set undofile                 "turn on the feature
   set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
-  endif
+endif
 
 " Allows for mouse scrolling
 set mouse=a
