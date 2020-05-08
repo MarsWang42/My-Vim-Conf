@@ -1,7 +1,7 @@
 # System-wise settings
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
-cp ./.zshrc ~
+cat ./.zshrc >> ~/.zshrc
 cp ./.nvim ~
 cp ./.tmux.conf.local ~
 source ~/.zshrc
