@@ -1,11 +1,8 @@
-# Install zsh
-sudo apt install -y zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
+# System-wise settings
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
-cp ./zshrc ~
-cp ./nvim ~
+cp ./.zshrc ~
+cp ./.nvim ~
 cp ./.tmux.conf.local ~
 source ~/.zshrc
 
