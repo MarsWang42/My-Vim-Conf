@@ -15,7 +15,7 @@ sudo easy_install3 pip
 
 # Install Node.js
 curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-bash n lts
+sudo bash n lts
 
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
