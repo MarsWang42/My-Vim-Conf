@@ -1,5 +1,13 @@
 # My ubuntu 16 Setup
 
+## Create a new user
+```bash
+adduser --disabled-password <your_username>
+usermod -aG sudo <your_username>
+su - <your_username>
+```
+And then update `.ssh/authorized_keys` with your ssh public key.
+
 ## Install zsh
 ```bash
 sudo apt install -y zsh
