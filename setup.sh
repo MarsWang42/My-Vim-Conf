@@ -47,3 +47,5 @@ sudo apt-get install -y postgresql postgresql-contrib
 
 # Install redis
 sudo apt-get install -y redis-server
+
+source ~/.zshrc
