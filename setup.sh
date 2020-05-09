@@ -6,7 +6,7 @@ cp -R ./.config ~/
 
 
 # Install oh my tmux
-git clone https://github.com/gpakosz/.tmux.git ~
+git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f ~/.tmux/.tmux.conf
 cp ./.tmux.conf.local ~
 
