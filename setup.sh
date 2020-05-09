@@ -4,7 +4,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 cat ./.zshrc >> ~/.zshrc
 cp -R ./.config ~/
 cp ./.tmux.conf.local ~
-. ~/.zshrc
 
 
 # Install Python3

@@ -10,3 +10,10 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ```bash
 sudo bash setup.sh
 ```
+Follow the prompt and finish installing all softwares.
+```bash
+source ~/.zshrc
+```
+
+## Optional
+Open .zshrc and replace the theme with powerlevel10k
