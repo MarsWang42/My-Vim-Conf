@@ -3,6 +3,11 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 
 cat ./.zshrc >> ~/.zshrc
 cp -R ./.config ~/
+
+
+# Install oh my tmux
+git clone https://github.com/gpakosz/.tmux.git ~
+ln -s -f ~/.tmux/.tmux.conf
 cp ./.tmux.conf.local ~
 
 
