@@ -8,7 +8,8 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 ## Setup my system
 ```bash
-sudo bash setup.sh
+chmod +x ./setup.sh ./tmux.sh
+./setup.sh
 ```
 Follow the prompt and finish installing all softwares.
 ```bash

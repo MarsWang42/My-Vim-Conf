@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+
 # System-wise settings
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -6,6 +9,7 @@ cp -R ./.config ~/
 
 
 # Install oh my tmux
+./tmux.sh
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
 cp ./.tmux.conf.local ~
