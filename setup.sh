@@ -48,4 +48,10 @@ sudo apt-get install -y postgresql postgresql-contrib
 # Install redis
 sudo apt-get install -y redis-server
 
+
+# Create ssh key
+ssh-keygen -t rsa
+
+
+# Reload .zshrc
 source ~/.zshrc
