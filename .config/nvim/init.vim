@@ -13,8 +13,9 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
 
-" The following are examples of different formats supported.
+" Color Schemes
 Plug 'flazz/vim-colorschemes'
+Plug 'joshdick/onedark.vim'
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -226,7 +227,7 @@ call plug#end()
 set t_Co=256
 syntax on
 set background=dark
-colorscheme molokai
+colorscheme onedark
 hi Normal guibg=NONE ctermbg=NONE
 
 " Line Numbers
