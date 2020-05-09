@@ -4,7 +4,7 @@ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerl
 cat ./.zshrc >> ~/.zshrc
 cp -R ./.config ~/
 cp ./.tmux.conf.local ~
-source ~/.zshrc
+. ~/.zshrc
 
 
 # Install Python3
@@ -51,7 +51,3 @@ sudo apt-get install -y redis-server
 
 # Create ssh key
 ssh-keygen -t rsa
-
-
-# Reload .zshrc
-source ~/.zshrc
