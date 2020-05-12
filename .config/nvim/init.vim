@@ -15,7 +15,7 @@ call plug#begin('~/.vim/plugged')
 
 " Color Schemes
 Plug 'flazz/vim-colorschemes'
-Plug 'tomasiser/vim-code-dark'
+Plug 'joshdick/onedark.vim'
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
@@ -34,9 +34,48 @@ endif
 
 " Icons
 Plug 'ryanoasis/vim-devicons', {'commit': '58e57b6'}
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
+" Files + devicons
+function! Fzf_dev()
+  let l:fzf_files_options = ' -m --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}"'
+
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let result = []
+    for candidate in a:candidates
+      let filename = fnamemodify(candidate, ':p:t')
+      let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
+      call add(result, printf("%s %s", icon, candidate))
+    endfor
+
+    return result
+  endfunction
+
+  function! s:edit_file(items)
+    let items = a:items
+    let i = 1
+    let ln = len(items)
+    while i < ln
+      let item = items[i]
+      let parts = split(item, ' ')
+      let file_path = get(parts, 1, '')
+      let items[i] = file_path
+      let i += 1
+    endwhile
+    call s:Sink(items)
+  endfunction
+
+  let opts = fzf#wrap({})
+  let opts.source = <sid>files()
+  let s:Sink = opts['sink*']
+  let opts['sink*'] = function('s:edit_file')
+  let opts.options .= l:fzf_files_options
+  call fzf#run(opts)
+
+endfunction
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -164,7 +203,7 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
       \ }
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :call Fzf_dev()<cr>
 nnoremap <c-i> :Ag<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " Augmenting Ag command using fzf#vim#with_preview function
@@ -202,7 +241,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
-let g:airline_theme = 'codedark'
+let g:airline_theme = 'onedark'
 
 " DelemitMate
 Plug 'Raimondi/delimitMate'
@@ -277,8 +316,7 @@ call plug#end()
 set t_Co=256
 syntax on
 set background=dark
-colorscheme codedark
-hi Normal guibg=NONE ctermbg=NONE
+colorscheme onedark
 
 " Line Numbers
 set relativenumber
@@ -318,10 +356,9 @@ endif
 " Allows for mouse scrolling
 set mouse=a
 
-" Highlight Current Line/Columhn
+" Highlight Current Line
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=DarkGray
-set cursorcolumn
+highlight NERDTreeFile ctermfg=14
 
 " Highlight All Search Pattern
 set hlsearch
