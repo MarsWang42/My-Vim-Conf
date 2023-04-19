@@ -1,3 +1,4 @@
 {
-  "coc.preferences.jumpCommand": "tab drop"
+  "coc.preferences.jumpCommand": "tab drop",
+  "pairs.enableBackspace": true
 }
