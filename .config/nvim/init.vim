@@ -117,6 +117,7 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
+  \ 'coc-go',
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
@@ -134,11 +135,6 @@ set updatetime=300
 set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
-
-" coc config
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -253,8 +249,9 @@ let delimitMate_expand_space = 1
 Plug 'airblade/vim-gitgutter'
 
 " Code Formatter
-Plug 'Chiel92/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 nnoremap <Leader><Leader>a :Autoformat<cr>
+autocmd BufWrite * :Autoformat
 
 " Plugins for Javascript
 Plug 'jelera/vim-javascript-syntax'
