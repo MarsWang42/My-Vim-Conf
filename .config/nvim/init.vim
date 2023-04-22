@@ -111,7 +111,7 @@ au VimEnter * call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#
 autocmd VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
 highlight! link NERDTreeFlags NERDTreeDir
 
-" " AutoCompleteRelated
+" AutoCompleteRelated
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -157,6 +157,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Copilot
+Plug 'github/copilot.vim'
 
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
