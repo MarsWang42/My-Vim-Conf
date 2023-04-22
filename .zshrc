@@ -15,3 +15,5 @@ export PATH=~/.npm-global/bin:$PATH
 alias t=tmux
 alias a="tmux a"
 alias tm="teamocil mars --here"
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/.local/bin
