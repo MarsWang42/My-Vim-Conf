@@ -7,6 +7,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 cat ./.zshrc >> ~/.zshrc
 cp -R ./.config ~/
 
+# Update apt
+sudo apt-get update
 
 # Install oh my tmux
 ./tmux.sh
@@ -37,17 +39,17 @@ npm install -g n
 # Install yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install -y yarn
+sudo apt install -y yarn
 
 # Install Go
 wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.3.linux-amd64.tar.gz
+# Air binary will be $(go env GOPATH)/bin/air
+curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 
 # Install neovim
 sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
 sudo apt-get install -y neovim
-
 
 # Install vim setup dependencies
 python2 -m pip install --user --upgrade pynvim
